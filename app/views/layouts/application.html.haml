@@ -19,16 +19,16 @@
     #main{:role => "main"}
       .container-fluid
         .row-fluid
-          .span3
-            .well.sidebar-nav
-              - unless signed_in?
+          - unless signed_in?
+            .span3
+              .well.sidebar-nav
                 = form_tag session_path(User.new) do
                   = label_tag(:email, "Email")
                   = text_field_tag(:email)
                   = label_tag(:password, "Пароль")
                   = text_field_tag(:password)
                   = submit_tag("Войти", class: "btn btn-primary")
-          .span9
+          %div{class: "#{signed_in? ? 'span12' : 'span9'}"}
             = render 'layouts/messages'
             = yield
           %footer
