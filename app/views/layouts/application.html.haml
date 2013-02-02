@@ -21,7 +21,13 @@
         .row-fluid
           .span3
             .well.sidebar-nav
-              Form
+              - unless signed_in?
+                = form_tag session_path(User.new) do
+                  = label_tag(:email, "Email")
+                  = text_field_tag(:email)
+                  = label_tag(:password, "Пароль")
+                  = text_field_tag(:password)
+                  = submit_tag("Войти", class: "btn btn-primary")
           .span9
             = render 'layouts/messages'
             = yield
