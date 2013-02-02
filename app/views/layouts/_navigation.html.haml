@@ -1,0 +1,14 @@
+%ul.nav
+  %li{ class: params[:controller] == "main" ? "active" : "" }
+    = link_to('Главная', "#")
+  %li{ class: params[:controller] == "news" ? "active" : "" }
+    = link_to('Новости', "#")
+  %li{ class: params[:controller] == "history" ? "active" : "" }
+    = link_to('История кафедры', "#")
+  %li{ class: params[:controller] == "" ? "active" : "" }
+    = link_to('Состав сотрудников', "#")
+  %li{ class: params[:controller] == "" ? "active" : "" }
+    = link_to('Учебные материалы', "#")
+  %li{ class: params[:controller] == "" ? "active" : "" }
+    = link_to('Успеваемость студентов', "#")
+
