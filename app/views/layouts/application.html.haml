@@ -24,9 +24,9 @@
               .well.sidebar-nav
                 = form_tag session_path(User.new) do
                   = label_tag(:email, "Email")
-                  = text_field_tag(:email)
+                  = text_field_tag("user[email]")
                   = label_tag(:password, "Пароль")
-                  = text_field_tag(:password)
+                  = password_field_tag("user[password]")
                   = submit_tag("Войти", class: "btn btn-primary")
           %div{class: "#{signed_in? ? 'span12' : 'span9'}"}
             = render 'layouts/messages'
