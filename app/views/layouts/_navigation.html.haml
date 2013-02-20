@@ -1,6 +1,6 @@
 %ul.nav
   %li{ class: params[:controller] == "main" ? "active" : "" }
-    = link_to('Главная', "#")
+    = link_to('Главная', root_path)
   %li{ class: params[:controller] == "news" ? "active" : "" }
     = link_to('Новости', "#")
   %li{ class: params[:controller] == "history" ? "active" : "" }
