@@ -13,7 +13,13 @@
     = yield(:head)
   %body
     %header.navbar.navbar-fixed-top
-      %h3= "Кафедра общей хирургии ВГМА"
+      .page-header
+        %h3
+          = "Кафедра общей хирургии ВГМА"
+          - if signed_in?
+            %small
+              = "Добро пожаловать, #{current_user.email}"
+              = link_to "Выход", destroy_user_session_path, class: "", method: :delete
       %nav.navbar-inner
         .container
           = render 'layouts/navigation'
@@ -29,6 +35,7 @@
                   = label_tag(:password, "Пароль")
                   = password_field_tag("user[password]")
                   = submit_tag("Войти", class: "btn btn-primary")
+                = link_to "Регистрация", new_user_registration_path
           %div{class: "#{signed_in? ? 'span12' : 'span9'}"}
             = render 'layouts/messages'
             = yield

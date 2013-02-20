@@ -1,5 +1,5 @@
 @import "bootstrap";
-body { padding-top: 120px; }
+body { padding-top: 150px; }
 @import "bootstrap-responsive";
 @import "bootstrap.min";
 
@@ -16,6 +16,15 @@ table.auth {
 .form-actions {
   border-top: none;
   background-color: transparent;
+}
+
+.navbar-inner {
+  position: relative;
+  top: -30px;
+}
+
+.page-header {
+  margin-bottom: 20px;
 }
 
 form#new_user {
