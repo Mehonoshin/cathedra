@@ -65,4 +65,16 @@ Cathedra::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
   config.assets.precompile += %w( themes/blue.css )
+
+  config.action_mailer.default_url_options = { :host => 'vgma.herokuapp.com' }
+  config.action_mailer.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    :address  => "smtp.gmail.com",
+    :port  => 587,
+    :user_name  => "vsu.conf@gmail.com",
+    :password  => "25BJ8kgJ",
+    :authentication  => 'plain',
+    :enable_starttls_auto => true
+  }
+
 end
