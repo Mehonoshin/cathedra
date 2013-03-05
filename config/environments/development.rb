@@ -36,4 +36,16 @@ Cathedra::Application.configure do
   config.assets.debug = true
 
   config.assets.precompile += %w( cerulean.min.css )
+
+  config.action_mailer.default_url_options = { :host => 'vgma.herokuapp.com' }
+  config.action_mailer.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    :address  => "smtp.gmail.com",
+    :port  => 587,
+    :user_name  => "vsu.conf@gmail.com",
+    :password  => "25BJ8kgJ",
+    :authentication  => 'plain',
+    :enable_starttls_auto => true
+  }
+
 end
