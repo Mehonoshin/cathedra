@@ -1,0 +1,6 @@
+= semantic_form_for @article do |f|
+  = f.inputs do
+    = f.input :title, label: "Заголовок"
+    = f.input :body, label: "Тело"
+  = f.actions do
+    = f.action :submit, label: "Создать", button_html: { class: "btn btn-primary" }

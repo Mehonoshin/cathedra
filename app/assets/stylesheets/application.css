@@ -9,5 +9,23 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require formtastic
  *= require_directory .
  */
+
+.form-actions {
+  border-top: none;
+  background-color: transparent;
+}
+
+input {
+  width: 300px;
+}
+textarea {
+  width: 400px;
+  height: 200px;
+}
+
+.center {
+  text-align: center;
+}
