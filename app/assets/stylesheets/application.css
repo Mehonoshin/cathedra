@@ -9,7 +9,6 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require formtastic
  *= require_directory .
  */
 
@@ -29,3 +28,12 @@ textarea {
 .center {
   text-align: center;
 }
+
+li.input {
+  width: 1000px;
+}
+
+.formtastic ol {
+  list-style: none;
+}
+

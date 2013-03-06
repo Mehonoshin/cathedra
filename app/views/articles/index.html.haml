@@ -5,7 +5,7 @@
 
 .news
   - @articles.each do |article|
-    .article
+    .article.well
       %h4= article.title
       - if can? :manage, article
         = link_to edit_article_path(article) do
@@ -14,7 +14,7 @@
           %i.icon-remove
 
       %p
-        = simple_format article.body
+        = raw article.body
         %br
         = russian_date(article.created_at)
 

@@ -13,6 +13,7 @@ gem 'formtastic-bootstrap'
 gem "carrierwave"
 gem "mini_magick"
 gem "fog", "~> 1.3.1"
+gem "ckeditor"
 
 gem 'ratchetio', '>= 0.4.0'
 gem 'dev_log_in'
