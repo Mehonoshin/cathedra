@@ -3,7 +3,10 @@ Cathedra::Application.routes.draw do
 
   devise_for :users
 
-  resources :articles
+  resources :articles, except: [:index]
+  resources :pages
   get "/news" => "articles#index", as: :news
+  get "/history" => "pages#history", as: :history
+  get "/staff" => "pages#staff", as: :staff
   root :to => 'main#index'
 end
