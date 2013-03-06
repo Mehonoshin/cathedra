@@ -16,7 +16,7 @@ class ArticlesController < ApplicationController
 
   def update
     @article.update_attributes(params[:article])
-    redirect_to articles_path, notice: "Новость успешно обновлена"
+    redirect_to news_path, notice: "Новость успешно обновлена"
   end
 
   def edit
@@ -24,7 +24,7 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article.destroy
-    redirect_to articles_path, notice: "Новость удаленo"
+    redirect_to news_path, notice: "Новость удаленo"
   end
 
   def new
