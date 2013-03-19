@@ -37,7 +37,16 @@
                   = password_field_tag("user[password]")
                   = submit_tag("Войти", class: "btn btn-primary")
                 = link_to "Регистрация", new_user_registration_path
-          %div{class: "#{signed_in? ? 'span12' : 'span9'}"}
+
+          - if params[:controller] == "articles"
+            .span3
+              .well.sidebar-nav
+                %ul.nav.nav-list
+                  - Article::CATEGORIES.each do |cat|
+                    %li{class: "#{params[:category] == cat ? 'active' : ''}"}
+                      = link_to t("categories.#{cat}"), news_path(category: cat)
+
+          %div{class: "#{display_sidebar? ? 'span9' : 'span12'}"}
             = render 'layouts/messages'
             = yield
           %footer

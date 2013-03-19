@@ -1,5 +1,10 @@
 %h2
   Новости кафедры
+
+- if @articles.empty?
+  %h4
+    Выберите категорию
+
 - if can? :create, Article
   = link_to "Добавить", new_article_path, class: "btn btn-primary"
 

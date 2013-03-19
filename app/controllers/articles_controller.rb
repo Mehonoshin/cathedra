@@ -3,7 +3,11 @@ class ArticlesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @articles = Article.order("id DESC")
+    if params[:category].present?
+      @articles = Article.where(category: params[:category]).order("id DESC")
+    else
+      @articles = []
+    end
   end
 
   def create
