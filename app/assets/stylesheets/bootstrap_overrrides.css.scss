@@ -1,6 +1,14 @@
 @import "bootstrap";
 @import "bootstrap-responsive";
 
+.adult {
+  position: relative;
+  float: right;
+  top: -40px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
 .hidden {
   display: none;
 }

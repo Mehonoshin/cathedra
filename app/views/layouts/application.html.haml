@@ -11,6 +11,7 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
     = yield(:head)
+
   %body
     %header.navbar
       .page-header
@@ -20,6 +21,9 @@
             %small
               = "Добро пожаловать, #{current_user.email}"
               = link_to "Выход", destroy_user_session_path, class: "", method: :delete
+        .adult
+          16+
+
       %nav.navbar-inner
         .container
           = render 'layouts/navigation'
