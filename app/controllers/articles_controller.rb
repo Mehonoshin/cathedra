@@ -24,7 +24,7 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article.destroy
-    redirect_to news_path, notice: "Новость удаленo"
+    redirect_to news_path, notice: "Новость удаленa"
   end
 
   def new
