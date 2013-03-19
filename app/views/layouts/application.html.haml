@@ -12,7 +12,7 @@
     = csrf_meta_tags
     = yield(:head)
   %body
-    %header.navbar.navbar-fixed-top
+    %header.navbar
       .page-header
         %h3
           = "Кафедра общей хирургии ВГМА"
@@ -23,6 +23,7 @@
       %nav.navbar-inner
         .container
           = render 'layouts/navigation'
+
     #main{:role => "main"}
       .container-fluid
         .row-fluid
