@@ -15,4 +15,13 @@ class User < ActiveRecord::Base
     is_admin
   end
 
+  def user!
+    update_attribute("is_admin", false)
+  end
+
+  def admin!
+    update_attribute("is_admin", true)
+  end
+
+
 end

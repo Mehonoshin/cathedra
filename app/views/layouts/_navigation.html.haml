@@ -1,6 +1,9 @@
 %ul.nav
   %li{ class: params[:controller] == "main" ? "active" : "" }
     = link_to('Главная', root_path)
+  - if signed_in? && current_user.admin?
+    %li{ class: params[:controller] == "users" ? "active" : "" }
+      = link_to('Пользователи', users_path)
   %li{ class: params[:controller] == "articles" ? "active" : "" }
     = link_to('Новости', news_path)
   %li{ class: params[:controller] == "history" ? "active" : "" }

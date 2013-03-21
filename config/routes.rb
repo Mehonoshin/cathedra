@@ -5,6 +5,12 @@ Cathedra::Application.routes.draw do
 
   resources :articles, except: [:index]
   resources :pages
+  resources :users do
+    member do
+      put :make_admin
+      put :make_user
+    end
+  end
   get "/news" => "articles#index", as: :news
   get "/history" => "pages#history", as: :history
   get "/staff" => "pages#staff", as: :staff

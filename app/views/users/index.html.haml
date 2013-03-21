@@ -1,0 +1,11 @@
+%table.table.table-bordered
+  %tr
+    %th= "Email"
+    %th= "Действия"
+  - @users.each do |user|
+    %tr
+      %td
+        = user.email
+      %td
+        = button_to "Сделать администратором", make_admin_user_path(user), method: :put, class: "btn btn-danger", confirm: "Вы точно хотите сделать пользователя администратором?" unless user.admin?
+        = button_to "Сделать пользователем", make_user_user_path(user), method: :put, class: "btn btn-primary" if user.admin?
