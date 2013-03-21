@@ -8,5 +8,6 @@ Cathedra::Application.routes.draw do
   get "/news" => "articles#index", as: :news
   get "/history" => "pages#history", as: :history
   get "/staff" => "pages#staff", as: :staff
+  get "/bases" => "pages#bases", as: :bases
   root :to => 'main#index'
 end

@@ -17,6 +17,11 @@ class PagesController < ApplicationController
     render :show
   end
 
+  def bases
+    @page = Page.find_by_permalink("bases")
+    render :show
+  end
+
   def edit
     @page = Page.find(params[:id])
   end
