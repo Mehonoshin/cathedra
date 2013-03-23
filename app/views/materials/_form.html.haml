@@ -1,0 +1,8 @@
+= semantic_form_for @material do |f|
+  = f.inputs do
+    = f.input :title, label: "Заголовок"
+    = f.input :file, label: "Файл"
+    = f.input :category, label: "Категория", collection: Hash[Material::CATEGORIES.map { |c| [t("materials.categories.#{c}"), c] }], include_blank: false
+    = f.input :department, label: "Факультет", collection: Hash[Material::FACULTIES.map { |c| [t("materials.faculties.#{c}"), c] }]
+  = f.actions do
+    = f.action :submit, label: "Применить", button_html: { class: "btn btn-primary" }

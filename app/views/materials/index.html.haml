@@ -1,0 +1,20 @@
+%h3
+  Список материалов
+
+- if can? :create, Material
+  .add
+    = button_to "Добавить", new_material_path, method: :get, class: "btn btn-primary"
+
+= form_tag "/materials", method: "get" do
+  = label_tag "Категория"
+  = select_tag :category, options_for_select(Material::CATEGORIES.map {|c| [t("materials.categories.#{c}"), c]}, params[:category])
+  - if params[:category].present?
+    = label_tag "Факультет"
+    = select_tag :faculty, options_for_select(Material::FACULTIES.map {|c| [t("materials.faculties.#{c}"), c]}, params[:faculty])
+  .action
+    = submit_tag "Показать", class: "btn btn-primary"
+
+%ul
+  - @materials.each do |material|
+    %li
+      = link_to material.title, material.file.url, target: "_blank"

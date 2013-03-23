@@ -6,6 +6,7 @@ class Ability
 
     can :read, Article
     can :read, Page
+    can :read, Material
 
     if user.admin?
       can :manage, :all
