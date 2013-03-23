@@ -18,3 +18,9 @@
   - @materials.each do |material|
     %li
       = link_to material.title, material.file.url, target: "_blank"
+      - if can? :manage, material
+        = link_to edit_material_path(material) do
+          %i.icon-edit
+        = link_to material_path(material), method: :delete, confirm: "Вы точно хотите удалить файл? Это действие необратимо!" do
+          %i.icon-remove
+
