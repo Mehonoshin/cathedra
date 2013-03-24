@@ -10,4 +10,11 @@ module StudentsHelper
     end
     groups
   end
+
+  def mark_box(value, limit, n_required)
+    marks = [["", ""]]
+    marks << ["H", 0] if n_required
+    1.upto(limit) { |i| marks << [i, i] }
+    select_tag :mark, options_for_select(marks, value), class: "mark-select"
+  end
 end

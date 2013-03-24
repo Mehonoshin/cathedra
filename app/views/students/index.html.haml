@@ -46,18 +46,19 @@
 
         - @department.first_semester_seminars_num.times do |i|
           %td.mark.seminar
-            = select_tag :mark, options_for_select([["", ""], [1,1], [2,2], [3,3], [4,4], [5,5]], stud.first_sem_seminars[i]), class: "mark-select"
-        %td.i-semester.yellow= stud.i_semester_result
+            = mark_box(stud.first_sem_seminars[i], 10, true)
+        %td.i-semester.yellow= mark_box(stud.i_semester_result, 10, true)
 
         - @department.second_semester_seminars_num.times do |i|
-          %td.mark.seminar= stud.second_sem_seminars[i]
-        %td.ii-semester.green= stud.ii_semester_result
+          %td.mark.seminar
+            = mark_box(stud.second_sem_seminars[i], 10, true)
+        %td.ii-semester.green= mark_box(stud.ii_semester_result, 10, true)
 
-        %td.illness-history= stud.illness_history
+        %td.illness-history= mark_box(stud.illness_history, 10, true)
         %td.before-rate= stud.before_rate
-        %td.exam-test= stud.exam_test
-        %td.exam-practice= stud.exam_practice
-        %td.exam-theory= stud.exam_theory
+        %td.exam-test= mark_box(stud.exam_test, 10, false)
+        %td.exam-practice= mark_box(stud.exam_practice, 10, false)
+        %td.exam-theory= mark_box(stud.exam_theory, 10, false)
         %td.after-rate= stud.rate_after
         %td.common-rate= stud.common_rate
 
