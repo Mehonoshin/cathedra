@@ -12,7 +12,12 @@ class UsersController < ApplicationController
 
   def make_user
     User.find(params[:id]).user!
-    redirect_to users_path, notice: "Пользователь удален из администаторов"
+    redirect_to users_path, notice: "Установлена роль пользователя"
+  end
+
+  def make_tutor
+    User.find(params[:id]).tutor!
+    redirect_to users_path, notice: "Установлена роль преподавателя"
   end
 
 end

@@ -31,7 +31,7 @@
     #main{:role => "main"}
       .container-fluid
         .row-fluid
-          - unless signed_in?
+          - if !signed_in? && params[:controller] == "main"
             .span3
               .well.sidebar-nav
                 = form_tag session_path(User.new) do

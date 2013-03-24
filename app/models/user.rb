@@ -9,19 +9,22 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :is_admin
   # attr_accessible :title, :body
   #
+  state_machine :state, :initial => :user do
+    event :admin do
+      transition any => :admin
+    end
 
+    event :user do
+      transition any => :user
+    end
 
-  def admin?
-    is_admin
+    event :admin do
+      transition any => :admin
+    end
+
+    event :tutor do
+      transition any => :tutor
+    end
   end
-
-  def user!
-    update_attribute("is_admin", false)
-  end
-
-  def admin!
-    update_attribute("is_admin", true)
-  end
-
 
 end

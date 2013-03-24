@@ -10,6 +10,7 @@ Cathedra::Application.routes.draw do
     member do
       put :make_admin
       put :make_user
+      put :make_tutor
     end
   end
   get "/news" => "articles#index", as: :news
