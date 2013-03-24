@@ -6,6 +6,7 @@ Cathedra::Application.routes.draw do
   resources :articles, except: [:index]
   resources :pages
   resources :materials
+  resources :students
   resources :users do
     member do
       put :make_admin

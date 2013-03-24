@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  first_semester_seminars_num: 1
+  second_semester_seminars_num: 1
+  courses: MyString
+  groups: 1
+  title: MyString
+
+two:
+  first_semester_seminars_num: 1
+  second_semester_seminars_num: 1
+  courses: MyString
+  groups: 1
+  title: MyString

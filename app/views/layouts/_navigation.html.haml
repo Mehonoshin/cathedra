@@ -12,8 +12,8 @@
     = link_to('Состав сотрудников', staff_path)
   %li{ class: params[:controller] == "bases" ? "active" : "" }
     = link_to('Базы кафедры', bases_path)
-  %li{ class: params[:controller] == "" ? "active" : "" }
+  %li{ class: params[:controller] == "materials" ? "active" : "" }
     = link_to('Учебные материалы', materials_path)
-  %li{ class: params[:controller] == "" ? "active" : "" }
-    = link_to('Успеваемость студентов', "#")
+  %li{ class: params[:controller] == "students" ? "active" : "" }
+    = link_to('Успеваемость студентов', students_path)
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130324113339) do
+ActiveRecord::Schema.define(:version => 20130324173339) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -37,6 +37,16 @@ ActiveRecord::Schema.define(:version => 20130324113339) do
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "idx_ckeditor_assetable"
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_ckeditor_assetable_type"
 
+  create_table "departments", :force => true do |t|
+    t.integer  "first_semester_seminars_num"
+    t.integer  "second_semester_seminars_num"
+    t.string   "courses"
+    t.integer  "groups"
+    t.string   "title"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
+
   create_table "materials", :force => true do |t|
     t.string   "title"
     t.string   "file"
@@ -52,6 +62,26 @@ ActiveRecord::Schema.define(:version => 20130324113339) do
     t.string   "permalink"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "students", :force => true do |t|
+    t.integer  "group_num"
+    t.integer  "department_id"
+    t.string   "name"
+    t.integer  "course"
+    t.string   "first_sem_seminars"
+    t.string   "second_sem_seminars"
+    t.integer  "illness_history"
+    t.integer  "before_rate"
+    t.integer  "exam_test"
+    t.integer  "exam_practice"
+    t.integer  "exam_theory"
+    t.integer  "rate_after"
+    t.integer  "common_rate"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.integer  "i_semester"
+    t.integer  "ii_semester"
   end
 
   create_table "users", :force => true do |t|

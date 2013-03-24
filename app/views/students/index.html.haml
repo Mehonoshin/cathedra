@@ -1,0 +1,56 @@
+%h3
+  Успеваемость студентов
+%h5
+  Дисциплина "Общая хиругия"
+
+= form_tag "/students", method: :get do
+  .inputs
+    = label_tag "Факультет"
+    = select_tag :department, options_for_select(Department.all.map {|d| [d.title, d.id]})
+    = label_tag "Курс"
+    = select_tag :course, options_for_select([[1,1], [2,2], [3,3], [4,4], [5,5],[6,6]])
+    = label_tag "Группа"
+    = select_tag :group, options_for_select(groups_list)
+  .action
+    = submit_tag "Ok", class: "btn btn-primary"
+
+
+- unless @students.empty?
+  %table.table.table-bordered.table-hover
+    %tr
+      %th{rowspan: 2}= "ФИО"
+      %th{colspan: @department.first_semester_seminars_num}= "Семинары"
+      %th{rowspan: 2}= "I семестр"
+      %th{colspan: @department.second_semester_seminars_num}= "Семинары"
+      %th{rowspan: 2}= "II семестр"
+      %th{rowspan: 2}= "История болезни"
+      %th{rowspan: 2}= "Предв. рейтинг"
+      %th{colspan: 3}= "Экзамен"
+      %th{rowspan: 2}= "Рейтинг после экз."
+      %th{rowspan: 2}= "Общий рейтинг"
+    %tr
+      - @department.first_semester_seminars_num.times do |i|
+        %th= i + 1
+      - @department.second_semester_seminars_num.times do |i|
+        %th= i + 1
+      %th= "Тест"
+      %th= "Практика"
+      %th= "Теория"
+
+    - @students.each do |stud|
+      %tr
+        %td= stud.name
+        - @department.first_semester_seminars_num.times do |i|
+          %td.mark.seminar= stud.first_sem_seminars[i]
+        %td.i-semester.yellow= stud.i_semester_result
+        - @department.second_semester_seminars_num.times do |i|
+          %td.mark.seminar= stud.second_sem_seminars[i]
+        %td.ii-semester.green= stud.ii_semester_result
+        %td.illness-history= stud.illness_history
+        %td.before-rate= stud.before_rate
+        %td.exam-test= stud.exam_test
+        %td.exam-practice= stud.exam_practice
+        %td.exam-theory= stud.exam_theory
+        %td.after-rate= stud.rate_after
+        %td.common-rate= stud.common_rate
+

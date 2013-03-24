@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  group_num: 1
+  department_id: 1
+  name: MyString
+  course: 1
+  first_sem_seminars: MyString
+  second_sem_seminars: MyString
+  illness_history: 1
+  before_rate: 1
+  exam_test: 1
+  exam_practice: 1
+  exam_theory: 1
+  rate_after: 1
+  common_rate: 1
+
+two:
+  group_num: 1
+  department_id: 1
+  name: MyString
+  course: 1
+  first_sem_seminars: MyString
+  second_sem_seminars: MyString
+  illness_history: 1
+  before_rate: 1
+  exam_test: 1
+  exam_practice: 1
+  exam_theory: 1
+  rate_after: 1
+  common_rate: 1
