@@ -20,9 +20,9 @@
     %tr
       %th{rowspan: 2}= "ФИО"
       %th{colspan: @department.first_semester_seminars_num}= "Семинары"
-      %th{rowspan: 2}= "I семестр"
+      %th{rowspan: 2}= "I"
       %th{colspan: @department.second_semester_seminars_num}= "Семинары"
-      %th{rowspan: 2}= "II семестр"
+      %th{rowspan: 2}= "II"
       %th{rowspan: 2}= "История болезни"
       %th{rowspan: 2}= "Предв. рейтинг"
       %th{colspan: 3}= "Экзамен"
@@ -38,17 +38,21 @@
       %th= "Теория"
 
     - @students.each do |stud|
-      %tr
+      %tr{"data-student-id" => stud.id}
         %td
           = stud.name
           = link_to student_path(stud), method: :delete, confirm: "Вы точно хотите удалить студента?" do
             %i.icon-remove
+
         - @department.first_semester_seminars_num.times do |i|
-          %td.mark.seminar= stud.first_sem_seminars[i]
+          %td.mark.seminar
+            = select_tag :mark, options_for_select([["", ""], [1,1], [2,2], [3,3], [4,4], [5,5]], stud.first_sem_seminars[i]), class: "mark-select"
         %td.i-semester.yellow= stud.i_semester_result
+
         - @department.second_semester_seminars_num.times do |i|
           %td.mark.seminar= stud.second_sem_seminars[i]
         %td.ii-semester.green= stud.ii_semester_result
+
         %td.illness-history= stud.illness_history
         %td.before-rate= stud.before_rate
         %td.exam-test= stud.exam_test

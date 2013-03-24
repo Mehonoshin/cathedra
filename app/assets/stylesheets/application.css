@@ -9,7 +9,13 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_directory .
+ *= require articles
+ *= require main
+ *= require materials
+ *= require pages
+ *= require students
+ *= require select2
+ *= require bootstrap_overrrides
  */
 
 .form-actions {

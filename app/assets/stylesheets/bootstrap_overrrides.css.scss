@@ -1,6 +1,12 @@
 @import "bootstrap";
 @import "bootstrap-responsive";
 
+.select2-container .select2-choice div {
+  div {
+    display: none;
+  }
+}
+
 .yellow {
   background: #F5F7CB;
 }
