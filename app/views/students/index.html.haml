@@ -39,7 +39,10 @@
 
     - @students.each do |stud|
       %tr
-        %td= stud.name
+        %td
+          = stud.name
+          = link_to student_path(stud), method: :delete, confirm: "Вы точно хотите удалить студента?" do
+            %i.icon-remove
         - @department.first_semester_seminars_num.times do |i|
           %td.mark.seminar= stud.first_sem_seminars[i]
         %td.i-semester.yellow= stud.i_semester_result
