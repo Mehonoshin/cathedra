@@ -14,6 +14,7 @@
     = link_to('Базы кафедры', bases_path)
   %li{ class: params[:controller] == "materials" ? "active" : "" }
     = link_to('Учебные материалы', materials_path)
-  %li{ class: params[:controller] == "students" ? "active" : "" }
-    = link_to('Успеваемость студентов', students_path)
+  - if can? :read, Student
+    %li{ class: params[:controller] == "students" ? "active" : "" }
+      = link_to('Успеваемость студентов', students_path)
 

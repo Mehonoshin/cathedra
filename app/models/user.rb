@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :is_admin
   # attr_accessible :title, :body
   #
-  state_machine :state, :initial => :user do
+  state_machine :state, :initial => :guest do
     event :admin do
       transition any => :admin
     end

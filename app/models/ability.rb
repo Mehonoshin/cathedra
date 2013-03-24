@@ -8,6 +8,14 @@ class Ability
     can :read, Page
     can :read, Material
 
+    if user.user?
+      can :read, Student
+    end
+
+    if user.tutor?
+      can :manage, Student
+    end
+
     if user.admin?
       can :manage, :all
       can :access, :ckeditor   # needed to access Ckeditor filebrowser
