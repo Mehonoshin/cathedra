@@ -1,5 +1,9 @@
 module MaterialsHelper
   def map_faculties(category)
-    Material::FACULTIES
+    if category == "stud_society"
+      []
+    else
+      Material::FACULTIES
+    end
   end
 end
