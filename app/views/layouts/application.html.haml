@@ -50,6 +50,23 @@
                     %li{class: "#{params[:category] == cat ? 'active' : ''}"}
                       = link_to t("categories.#{cat}"), news_path(category: cat)
 
+          - if params[:controller] == "materials"
+            .span3
+              .well.sidebar-nav
+                %ul.nav.nav-list
+                  %li.nav-header
+                    Категории
+                  - Material::CATEGORIES.each do |cat|
+                    %li{class: "#{params[:category] == cat ? 'active' : ''}"}
+                      = link_to t("materials.categories.#{cat}"), materials_path(category: cat)
+
+                  %li.nav-header
+                    Факультеты
+                  - if params[:category].present?
+                    - map_faculties(params[:category]).each do |f|
+                      %li{class: "#{params[:faculty] == f ? 'active' : ''}"}
+                        = link_to t("materials.faculties.#{f}"), materials_path(category: params[:category], faculty: f)
+
           %div{class: "#{display_sidebar? ? 'span9' : 'span12'}"}
             = render 'layouts/messages'
             = yield
