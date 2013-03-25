@@ -3,7 +3,7 @@
 %h5
   Дисциплина "Общая хиругия"
 
-= form_tag "/students", method: :get do
+= form_tag "/students", method: :get, class: "group-select-form" do
   .inputs
     = label_tag "Факультет"
     = select_tag :department, options_for_select(Department.all.map {|d| [d.title, d.id]}, params[:department])
@@ -62,13 +62,13 @@
         %td.after-rate= stud.rate_after
         %td.common-rate= stud.common_rate
 
-  - if can? :manage, Student
-    %h3= "Добавить студента"
-    = form_for Student.new do |f|
-      = f.label :name, "ФИО"
-      = f.text_field :name
-      = f.hidden_field :department_id, value: @department.id
-      = f.hidden_field :course, value: params[:course]
-      = f.hidden_field :group_num, value: params[:group]
-      = f.submit "Добавить", class: "btn btn-primary"
+- if can? :manage, Student && @department.present?
+  %h3= "Добавить студента"
+  = form_for Student.new do |f|
+    = f.label :name, "ФИО"
+    = f.text_field :name
+    = f.hidden_field :department_id, value: @department.id
+    = f.hidden_field :course, value: params[:course]
+    = f.hidden_field :group_num, value: params[:group]
+    = f.submit "Добавить", class: "btn btn-primary"
 
