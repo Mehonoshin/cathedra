@@ -1,7 +1,7 @@
 # coding: utf-8
 class PagesController < ApplicationController
   load_and_authorize_resource
-  skip_authorize_resource :only => [:history, :staff]
+  skip_authorize_resource :only => [:history, :staff, :bases]
 
   def show
     @page = Page.find_by_permalink(params[:id])
