@@ -41,8 +41,9 @@
       %tr{"data-student-id" => stud.id}
         %td
           = stud.name
-          = link_to student_path(stud), method: :delete, confirm: "Вы точно хотите удалить студента?" do
-            %i.icon-remove
+          - if can? :manage, Student
+            = link_to student_path(stud), method: :delete, confirm: "Вы точно хотите удалить студента?" do
+              %i.icon-remove
 
         - @department.first_semester_seminars_num.times do |i|
           %td.mark.seminar.i-sem
