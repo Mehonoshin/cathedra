@@ -24,4 +24,10 @@ class StudentsController < ApplicationController
     @student.delete
     redirect_to students_path(department: @student.department_id, course: @student.course, group: @student.group_num), notice: "Студент удален"
   end
+
+  def update
+   @student = Student.find(params[:id])
+   @student.update_attributes(params[:student])
+   render nothing: true
+  end
 end

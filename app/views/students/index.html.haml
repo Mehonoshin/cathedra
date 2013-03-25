@@ -45,12 +45,12 @@
             %i.icon-remove
 
         - @department.first_semester_seminars_num.times do |i|
-          %td.mark.seminar
+          %td.mark.seminar.i-sem
             = mark_box(stud.first_sem_seminars[i], 10, true)
         %td.i-semester.yellow= mark_box(stud.i_semester_result, 10, true)
 
         - @department.second_semester_seminars_num.times do |i|
-          %td.mark.seminar
+          %td.mark.seminar.ii-sem
             = mark_box(stud.second_sem_seminars[i], 10, true)
         %td.ii-semester.green= mark_box(stud.ii_semester_result, 10, true)
 

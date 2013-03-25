@@ -30,10 +30,10 @@ class Student < ActiveRecord::Base
     def set_before_rate
       sum = 0
       first_sem_seminars.each do |sem|
-        sum += sem * 0.1
+        sum += sem.to_i * 0.1
       end
       second_sem_seminars.each do |sem|
-        sum += sem * 0.1
+        sum += sem.to_i * 0.1
       end
       sum += i_semester * 0.2 if i_semester?
       sum += ii_semester * 0.2 if ii_semester?
