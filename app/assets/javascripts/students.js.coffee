@@ -6,6 +6,21 @@
 $ ->
   $('.mark-select').select2()
 
+  $('.cell').change ->
+    id = $(this).parent().data("studentId")
+    field = $(this).data("fieldName")
+    value = $(this).children('select').val()
+    req = {
+      url: "/students/" + id,
+      type: 'PUT',
+      data: {
+        student: {
+        }
+      }
+    }
+    req["data"]["student"][field] = value
+    $.ajax(req)
+
   $('.mark').change ->
     id = $(this).parent().data("studentId")
     semester = if $(this).hasClass("i-sem") then "i-sem" else "ii-sem"

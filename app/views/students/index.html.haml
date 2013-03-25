@@ -47,18 +47,18 @@
         - @department.first_semester_seminars_num.times do |i|
           %td.mark.seminar.i-sem
             = mark_box(stud.first_sem_seminars[i], 10, true)
-        %td.i-semester.yellow= mark_box(stud.i_semester_result, 10, true)
+        %td.i-semester.yellow.cell{"data-field-name" => "i_semester"}= mark_box(stud.i_semester_result, 10, true)
 
         - @department.second_semester_seminars_num.times do |i|
           %td.mark.seminar.ii-sem
             = mark_box(stud.second_sem_seminars[i], 10, true)
-        %td.ii-semester.green= mark_box(stud.ii_semester_result, 10, true)
+        %td.ii-semester.green.cell{"data-field-name" => "ii_semester"}= mark_box(stud.ii_semester_result, 10, true)
 
-        %td.illness-history= mark_box(stud.illness_history, 10, true)
+        %td.illness-history.cell{"data-field-name" => "illness_history"}= mark_box(stud.illness_history, 10, true)
         %td.before-rate= stud.before_rate
-        %td.exam-test= mark_box(stud.exam_test, 10, false)
-        %td.exam-practice= mark_box(stud.exam_practice, 10, false)
-        %td.exam-theory= mark_box(stud.exam_theory, 10, false)
+        %td.exam-test.cell{"data-field-name" => "exam_test"}= mark_box(stud.exam_test, 10, false)
+        %td.exam-practice.cell{"data-field-name" => "exam_practice"}= mark_box(stud.exam_practice, 10, false)
+        %td.exam-theory.cell{"data-field-name" => "exam_theory"}= mark_box(stud.exam_theory, 10, false)
         %td.after-rate= stud.rate_after
         %td.common-rate= stud.common_rate
 
