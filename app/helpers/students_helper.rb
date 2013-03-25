@@ -4,11 +4,19 @@ module StudentsHelper
     Department.all.each do |dept|
       1.upto(dept.groups) do |num|
         dept.courses.each do |course|
-          groups << ["#{dept.title[0..0]}-#{course}#{num}", num]
+          groups << ["#{dept.title[0..0]}-#{course}#{format_num(num)}", num]
         end
       end
     end
     groups
+  end
+
+  def format_num(num)
+    if num < 10
+      "0#{num}"
+    else
+      num
+    end
   end
 
   def mark_box(value, limit, n_required)
