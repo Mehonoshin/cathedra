@@ -3,16 +3,30 @@
 %h5
   Дисциплина "Общая хиругия"
 
-= form_tag "/students", method: :get, class: "group-select-form" do
-  .inputs
-    = label_tag "Факультет"
-    = select_tag :department, options_for_select(Department.all.map {|d| [d.title, d.id]}, params[:department])
-    = label_tag "Курс"
-    = select_tag :course, options_for_select([[1,1], [2,2], [3,3], [4,4], [5,5],[6,6]], params[:course])
-    = label_tag "Группа"
-    = select_tag :group, options_for_select(groups_list, params[:group])
-  .action
-    = submit_tag "Ok", class: "btn btn-primary"
+- if @department.nil?
+  = form_tag "/students", method: :get, class: "group-select-form" do
+    .inputs
+      .department{"data-departments" => groups_list.to_json}
+        = label_tag "Факультет"
+        = select_tag :department, options_for_select(Department.all.map {|d| [d.title, d.id]}, params[:department]), include_blank: true
+      .course.hidden
+        = label_tag "Курс"
+        = select_tag :course, options_for_select([[1,1], [2,2], [3,3], [4,4], [5,5],[6,6]], params[:course]), include_blank: true
+      .group.hidden
+        = label_tag "Группа"
+        = select_tag :group, options_for_select(groups_list, params[:group])
+    .action.hidden
+      = submit_tag "Ok", class: "btn btn-primary"
+- else
+  %p
+    %b Факультет:
+    = @department.title
+  %p
+    %b Курс:
+    = params[:course]
+  %p
+    %b Группа:
+    = group_name(@department, params[:course], params[:group].to_i)
 
 
 - unless @students.empty?

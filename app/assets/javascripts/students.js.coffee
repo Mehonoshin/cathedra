@@ -4,8 +4,34 @@
 #
 
 $ ->
-  $('.mark-select').select2()
+  jDepartmentSelector = $('#department')
+  jGroupSelector = $("#group")
+  jGroupsMap = $('.department').data("departments")
 
+  jDepartmentSelector.change ->
+    text = $('#department option:selected').text()
+    rawData = jGroupsMap
+    courses = Object.keys(rawData[text])
+    options = $('#course option')
+
+    $('.course').removeClass("hidden")
+    $('#course').val("")
+
+    for option in options
+      do (option) ->
+        unless $(option).text().toString() in courses
+          $(option).attr({ disabled: 'disabled' })
+
+
+  $('#course').change ->
+    currentCourse = $('#course').val()
+    currentDepartment = $('#department option:selected').text()
+    jGroupSelector.html(jGroupsMap[currentDepartment][currentCourse])
+    $('.group').removeClass("hidden")
+    $('.action').removeClass("hidden")
+
+
+  $('.mark-select').select2()
   $('.cell').change ->
     id = $(this).parent().data("studentId")
     field = $(this).data("fieldName")

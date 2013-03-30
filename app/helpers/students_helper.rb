@@ -1,14 +1,21 @@
 module StudentsHelper
   def groups_list
-    groups = []
+    groups = {}
     Department.all.each do |dept|
-      1.upto(dept.groups) do |num|
-        dept.courses.each do |course|
-          groups << ["#{dept.title[0..0]}-#{course}#{format_num(num)}", num]
+      groups[dept.title] = {}
+      dept.courses.each do |course|
+        groups[dept.title][course] = []
+        1.upto(dept.groups) do |num|
+          groups[dept.title][course] << [group_name(dept, course, num), num]
         end
+        groups[dept.title][course] = options_for_select(groups[dept.title][course])
       end
     end
     groups
+  end
+
+  def group_name(dept, course, num)
+    dept.title[0..0] + '-' + course.to_s + format_num(num).to_s
   end
 
   def format_num(num)
