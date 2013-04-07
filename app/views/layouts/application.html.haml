@@ -8,6 +8,17 @@
     %meta{:content => "", :name => "author"}
     = stylesheet_link_tag "application", :media => "all"
     = stylesheet_link_tag "themes/blue", :media => "all"
+    :css
+      .table td {
+        vertical-align: middle;
+        text-align: center;
+      }
+      .seminar-desc tbody {
+        vertical-align: top;
+      }
+      .select2-drop.select2-with-searchbox.select2-drop-active {
+        width: 40px;
+      }
     = javascript_include_tag "application"
     = csrf_meta_tags
     = yield(:head)
