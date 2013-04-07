@@ -43,11 +43,11 @@ class Student < ActiveRecord::Base
       sum += i_semester * 2 * koeff if i_semester?
       sum += ii_semester * 2 * koeff if ii_semester?
       sum += illness_history * koeff if illness_history?
-      self.before_rate = sum * 10
+      self.before_rate = (sum * 10).round
     end
 
     def set_common_rate
-      self.common_rate = before_rate * 0.4 + rate_after * 0.6 if before_rate? && rate_after?
+      self.common_rate = (before_rate * 0.4 + rate_after * 0.6).round if before_rate? && rate_after?
     end
 
 end
