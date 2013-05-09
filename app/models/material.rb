@@ -6,4 +6,5 @@ class Material < ActiveRecord::Base
   mount_uploader :file, AttachmentUploader
 
   validates :title, presence: true
+  validates :priority, inclusion: 1..20
 end
