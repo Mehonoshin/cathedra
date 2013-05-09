@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   load_and_authorize_resource
 
   def index
+    @users = User.order("created_at DESC")
   end
 
   def make_admin

@@ -3,7 +3,7 @@
     %th= "Email"
     %th= "Действия"
   - @users.each do |user|
-    %tr{class: "#{'red' if user.pending_tutor? }"}
+    %tr{class: "#{'red' if user.guest? || user.pending_tutor? }"}
       %td
         %span.label= user.state
         = user.email
