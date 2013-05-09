@@ -11,11 +11,14 @@ class User < ActiveRecord::Base
   attr_accessor :user_role
   # attr_accessible :title, :body
   #
+  belongs_to :department
+  has_one :student
 
   validates :fio, presence: true
   validate :presence_of_department_for_student, on: :create
 
   after_create :set_pending_tutor_if_needed
+  after_create :create_according_student
 
   state_machine :state, :initial => :guest do
     event :admin do
@@ -44,6 +47,16 @@ class User < ActiveRecord::Base
   end
 
   private
+
+  def create_according_student
+    Student.create!(
+      user_id: id,
+      department_id: department_id,
+      course: course,
+      group_num: group,
+      name: fio
+    ) if user_role == "user"
+  end
 
   def set_pending_tutor_if_needed
     pending_tutor! if user_role == "tutor"

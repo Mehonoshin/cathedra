@@ -44,19 +44,19 @@
   <div class="student-fields <%= 'hidden' if resource.user_role == "tutor" %>">
     <div class="department" data-departments='<%= groups_list.to_json %>'>
       <%= f.label "Факультет" %>
-      <%= f.select :department_id, options_for_select(Department.all.map {|d| [d.title, d.id]}), html: { id: "department" } %>
+      <%= f.select :department_id, options_for_select(Department.all.map {|d| [d.title, d.id]}), html: { id: "department" }, include_blank: true %>
       <br />
     </div>
 
     <div class="course hidden">
       <%= f.label "Курс" %>
-      <%= f.select :course,  options_for_select([[1,1], [2,2], [3,3], [4,4], [5,5],[6,6]] )%>
+      <%= f.select :course,  options_for_select([[1,1], [2,2], [3,3], [4,4], [5,5],[6,6]]), include_blank: true %>
       <br />
     </div>
 
     <div class="group hidden">
       <%= f.label "Группа" %>
-      <%= f.select :group, groups_list %>
+      <%= f.select :group, groups_list, include_blank: true  %>
       <br />
     </div>
   </div>

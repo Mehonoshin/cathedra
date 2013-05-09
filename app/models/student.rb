@@ -2,8 +2,9 @@ class Student < ActiveRecord::Base
   attr_accessible :before_rate, :common_rate, :course, :department_id,
     :exam_practice, :exam_test, :exam_theory, :first_sem_seminars,
     :group_num, :illness_history, :name, :rate_after, :second_sem_seminars,
-    :i_semester, :ii_semester
+    :i_semester, :ii_semester, :user_id
   belongs_to :department
+  belongs_to :user
 
   serialize :first_sem_seminars, Array
   serialize :second_sem_seminars, Array

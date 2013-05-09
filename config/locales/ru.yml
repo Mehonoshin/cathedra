@@ -9,6 +9,9 @@ ru:
       user:
         password: "Пароль"
         fio: "ФИО"
+        department_id: "Факультет"
+        course: "Курс"
+        group: "Группа"
 
   hello: "Hello world"
   categories:

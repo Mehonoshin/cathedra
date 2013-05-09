@@ -23,10 +23,10 @@
     = @department.title
   %p
     %b Курс:
-    = params[:course]
+    = @course
   %p
     %b Группа:
-    = group_name(@department, params[:course], params[:group].to_i)
+    = group_name(@department, @course, @group)
 
 
 - unless @students.empty?

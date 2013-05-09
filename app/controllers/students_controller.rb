@@ -2,9 +2,16 @@
 class StudentsController < ApplicationController
   def index
     @students = []
-    if params[:department].present?
+    if params[:department].present? && (current_user.admin? || current_user.tutor?)
       @department = Department.find(params[:department])
+      @course = params[:course].to_i
+      @group = params[:group].to_i
       @students = Student.where(department_id: params[:department], course: params[:course], group_num: params[:group]).order("name ASC")
+    elsif current_user.user?
+      @students = Student.where(user_id: current_user.id)
+      @department = current_user.department
+      @course = current_user.course
+      @group = current_user.group
     end
   end
 
