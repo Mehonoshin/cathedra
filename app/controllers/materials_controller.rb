@@ -5,7 +5,7 @@ class MaterialsController < ApplicationController
   def index
     @materials = []
     if params[:category].present? && params[:faculty]
-      @materials = Material.where(category: params[:category], department: params[:faculty])
+      @materials = Material.where(category: params[:category], department: params[:faculty]).order("priority DESC")
     end
   end
 

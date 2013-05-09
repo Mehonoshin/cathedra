@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130407162213) do
+ActiveRecord::Schema.define(:version => 20130509081455) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -53,8 +53,9 @@ ActiveRecord::Schema.define(:version => 20130407162213) do
     t.string   "file"
     t.string   "category"
     t.string   "department"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.integer  "priority",   :default => 0
   end
 
   create_table "pages", :force => true do |t|
