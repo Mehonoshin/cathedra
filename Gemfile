@@ -18,7 +18,6 @@ gem "devise-i18n", "~> 0.8.3"
 gem 'rails-i18n'
 
 gem 'ratchetio', '>= 0.4.0'
-gem 'dev_log_in'
 
 gem 'haml'
 gem 'bootstrap-sass'
@@ -32,6 +31,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
 group :development do
+  gem 'dev_log_in'
   gem "letter_opener"
   gem 'pry-rails'
   gem 'ultimate-log-silencer'
