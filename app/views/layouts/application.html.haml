@@ -35,7 +35,7 @@
           = "Кафедра общей хирургии ВГМА"
           - if signed_in?
             %small
-              = "Добро пожаловать, #{current_user.email}"
+              = "Добро пожаловать, #{current_user.fio}"
               = link_to "Выход", destroy_user_session_path, class: "", method: :delete
         .adult
           16+

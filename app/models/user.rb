@@ -1,3 +1,4 @@
+# coding: utf-8
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, ,
@@ -6,9 +7,16 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :is_admin
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :is_admin, :fio, :department_id, :group, :course, :user_role
+  attr_accessor :user_role
   # attr_accessible :title, :body
   #
+
+  validates :fio, presence: true
+  validate :presence_of_department_for_student, on: :create
+
+  after_create :set_pending_tutor_if_needed
+
   state_machine :state, :initial => :guest do
     event :admin do
       transition any => :admin
@@ -24,6 +32,28 @@ class User < ActiveRecord::Base
 
     event :tutor do
       transition any => :tutor
+    end
+
+    event :pending_tutor do
+      transition :guest => :pending_tutor
+    end
+  end
+
+  def user_role
+    @user_role || "user"
+  end
+
+  private
+
+  def set_pending_tutor_if_needed
+    pending_tutor! if user_role == "tutor"
+  end
+
+  def presence_of_department_for_student
+    if user_role == "user"
+      errors.add(:department_id, "Не может быть пустым") if department_id.nil?
+      errors.add(:course, "Не может быть пустым") if course.nil?
+      errors.add(:group, "Не может быть пустым") if group.nil?
     end
   end
 

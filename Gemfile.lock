@@ -57,6 +57,7 @@ GEM
       orm_adapter (~> 0.1)
       railties (~> 3.1)
       warden (~> 1.2.1)
+    devise-i18n (0.8.3)
     devise-russian (2.0.1.1)
       devise
     erubis (2.7.0)
@@ -136,6 +137,8 @@ GEM
       activesupport (= 3.2.13)
       bundler (~> 1.0)
       railties (= 3.2.13)
+    rails-i18n (0.7.3)
+      i18n (~> 0.5)
     railties (3.2.13)
       actionpack (= 3.2.13)
       activesupport (= 3.2.13)
@@ -192,6 +195,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   dev_log_in
   devise
+  devise-i18n (~> 0.8.3)
   devise-russian
   fog (~> 1.3.1)
   formtastic
@@ -206,6 +210,7 @@ DEPENDENCIES
   pg
   pry-rails
   rails (= 3.2.13)
+  rails-i18n
   ratchetio (>= 0.4.0)
   sass-rails (~> 3.2.3)
   showoff-io

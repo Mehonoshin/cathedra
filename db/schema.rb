@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130509081455) do
+ActiveRecord::Schema.define(:version => 20130509084650) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -106,6 +106,10 @@ ActiveRecord::Schema.define(:version => 20130509081455) do
     t.boolean  "is_admin",               :default => false
     t.boolean  "is_tutor"
     t.string   "state"
+    t.string   "fio"
+    t.integer  "course"
+    t.integer  "group"
+    t.integer  "department_id"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

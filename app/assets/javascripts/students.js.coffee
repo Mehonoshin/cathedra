@@ -8,6 +8,12 @@ $ ->
   jGroupSelector = $("#group")
   jGroupsMap = $('.department').data("departments")
 
+  if !jDepartmentSelector.length
+    jDepartmentSelector = $('#user_department_id')
+    jGroupSelector = $("#group")
+    jGroupsMap = $('.department').data("departments")
+
+
   jDepartmentSelector.change ->
     text = $('#department option:selected').text()
     rawData = jGroupsMap

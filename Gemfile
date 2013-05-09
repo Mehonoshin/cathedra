@@ -14,6 +14,8 @@ gem "carrierwave"
 gem "mini_magick"
 gem "fog", "~> 1.3.1"
 gem "ckeditor"
+gem "devise-i18n", "~> 0.8.3"
+gem 'rails-i18n'
 
 gem 'ratchetio', '>= 0.4.0'
 gem 'dev_log_in'
