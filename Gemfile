@@ -37,6 +37,7 @@ group :development do
   gem 'ultimate-log-silencer'
   gem 'hirb'
   gem 'showoff-io'
+  gem 'railroady'
 end
 
 group :production do
