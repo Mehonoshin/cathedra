@@ -21,4 +21,9 @@ class UsersController < ApplicationController
     redirect_to users_path, notice: "Установлена роль преподавателя"
   end
 
+  def destroy
+    User.find(params[:id]).delete
+    redirect_to users_path, notice: "Пользователь удален"
+  end
+
 end

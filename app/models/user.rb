@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   #
   belongs_to :department
-  has_one :student
+  has_one :student, dependent: :destroy
 
   validates :fio, presence: true
   validate :presence_of_department_for_student, on: :create
